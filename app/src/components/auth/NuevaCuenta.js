@@ -1,12 +1,33 @@
 import React, { useState, useContext, useEffect } from 'react';
 import AlertaContext from '../../context/alertas/alertaContext';
-import { Link } from 'react-router-dom';
+import AuthContext from '../../context/autenticacion/authContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NuevaCuenta = () => {
 
     // extraer los valores del context
     const alertaContext = useContext(AlertaContext);
     const { alerta, mostrarAlerta } = alertaContext;
+    
+    const authContext = useContext(AuthContext); 
+    const { mensaje, autenticado, registrarUsuario } = authContext;
+
+    const navigate = useNavigate();
+
+    // En caso de que el usuario ya exista
+
+    useEffect(() => {
+
+        if (autenticado) {
+            navigate('/');
+        }
+
+        if (mensaje) {
+            mostrarAlerta(mensaje.msg, mensaje.categoria);
+        }
+    
+    }, [mensaje, autenticado, navigate]);
+    
 
     const [usuario, guardarUsuario] = useState({
         nombre: '',
@@ -49,6 +70,13 @@ const NuevaCuenta = () => {
             return;
         }
 
+        registrarUsuario({
+            nombre,
+            apellido,
+            email,
+            password
+        });
+
         // Pasarlo al action
         // registrarUsuario({
         //     nombre, 
@@ -67,11 +95,11 @@ const NuevaCuenta = () => {
                 <form
                  onSubmit={onSubmit}
                 >
-                    <div class="mb-3 mt-3">
-                        <label htmlFor="name" class="form-label">Nombre:</label>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="name" className="form-label">Nombre:</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="nombre" 
                             name="nombre"
                             placeholder="Escribe tu nombre" 
@@ -80,11 +108,11 @@ const NuevaCuenta = () => {
                         /> 
                     </div>
 
-                    <div class="mb-3 mt-3">
-                        <label htmlFor="secondname" class="form-label">Apellido:</label>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="secondname" className="form-label">Apellido:</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="apellido" 
                             name="apellido"
                             placeholder="Escribe tu apellido" 
@@ -93,11 +121,11 @@ const NuevaCuenta = () => {
                         /> 
                     </div>
 
-                    <div class="mb-3 mt-3">
-                        <label htmlFor="email" class="form-label">Email:</label>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="email" className="form-label">Email:</label>
                         <input 
                             type="email" 
-                            class="form-control" 
+                            className="form-control" 
                             id="email" 
                             name="email"
                             placeholder="Enter email" 
@@ -106,11 +134,11 @@ const NuevaCuenta = () => {
                         /> 
                     </div>
 
-                    <div class="mb-3 mt-3">
-                        <label htmlFor="password" class="form-label">Password:</label>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="password" className="form-label">Password:</label>
                         <input 
                             type="password" 
-                            class="form-control" 
+                            className="form-control" 
                             id="password" 
                             name="password"
                             placeholder="Enter password" 
@@ -120,11 +148,11 @@ const NuevaCuenta = () => {
                     </div>
 
                     
-                    <div class="mb-3 mt-3">
-                        <label htmlFor="confirmpassword" class="form-label">Repite el Password:</label>
+                    <div className="mb-3 mt-3">
+                        <label htmlFor="confirmpassword" className="form-label">Repite el Password:</label>
                         <input 
                             type="password" 
-                            class="form-control" 
+                            className="form-control" 
                             id="confirmar" 
                             name="confirmar"
                             placeholder="Repite el password" 

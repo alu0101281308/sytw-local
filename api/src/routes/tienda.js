@@ -5,7 +5,7 @@ const tiendaController = require("../controllers/tiendaController");
 // Consulta las baterias de todos los usuarios
 // api/tienda
 router.get("/",
-    tiendaController.consultarUsuario
+    tiendaController.consultarBaterias
 );
 
 module.exports = router;

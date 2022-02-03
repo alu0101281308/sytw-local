@@ -26,9 +26,9 @@ const BateriasSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  propietario: { 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: "Usuario" 
+  propietario: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Usuario",
   },
   registro: {
     type: Date,

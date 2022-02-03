@@ -25,11 +25,8 @@ const BateriaState = props => {
 
 
     const obtenerBaterias = (async () => {
-
-
         try {
-            const resultado = await clienteAxios.get('/api/baterias');
-            console.log(resultado);
+            const resultado = await clienteAxios.get('/api/baterias');  
             dispatch({
                 type: OBTENER_BATERIAS,
                 payload: resultado.data.baterias
@@ -37,14 +34,11 @@ const BateriaState = props => {
         } catch (error) {
             console.log(error);
         }
-
-
     })
 
     const agregarBateria = (async (bateria) => {
         try {
             const resultado = await clienteAxios.post('/api/baterias', bateria);
-            console.log(resultado);
             dispatch({
                 type: AGREGAR_BATERIA,
                 payload: bateria
@@ -61,11 +55,28 @@ const BateriaState = props => {
         })
     })
 
-    const eliminarBateria = ((bateria)=>{
-        dispatch({
-            type: ELIMINAR_BATERIA,
-            payload: bateria
-        })
+    const eliminarBateria = (async (bateria)=>{
+        console.log(bateria);
+        try {
+            const resultado = await clienteAxios.delete(`/api/baterias/${bateria._id}`);
+            console.log(resultado.data);
+            dispatch({
+                type: ELIMINAR_BATERIA,
+                payload: bateria
+            })
+        } catch (error) {
+            // const alerta = {
+            //     msg: 'Hubo un error',
+            //     categoria: 'alerta-error'
+            // }
+            
+            // dispatch({
+            //     type: PROYECTO_ERROR,
+            //     payload: alerta
+            // })
+            console.log(error)
+        }
+
     })
 
     const editarBateria = ((bateria) => {

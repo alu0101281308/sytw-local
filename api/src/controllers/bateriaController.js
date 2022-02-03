@@ -13,10 +13,12 @@ exports.crearBateria = async (req, res) => {
     try {
         // crea la bateria nueva
         bateria = new Bateria(req.body);
+        // Guardar el propietario via JWT
+        bateria.propietario = req.usuario.id;
 
         // guardar bateria
         await bateria.save();
-        res.json({msg: "Bateria guardada exitosamente"});
+        res.json(bateria);
 
     } catch (error) {
         console.log(error);
@@ -42,28 +44,31 @@ exports.eliminarBateria = async (req, res) => {
     const { usuario } = req.body;
 
     try {
-        let bateria = await Bateria.findById(req.params.id);
         
+        let bateria = await Bateria.findById(req.params.id);
+
+
         if (!bateria) {
-            return res.status(404).json({ msg: 'No existe esa bateria' });
+            return res.status(404).json({ msg: 'No existe esa tarea' });
         }
 
-        const propietario = await Usuario.findById(usuario);
+        const propietario = await Proyecto.findById(usuario);
 
         if (!propietario) {
-            return res.status(404).json({ msg: 'Propietario no encontrado' });
+            return res.status(404).json({ msg: 'Proyecto no encontrado' });
         }
 
-        // revisar si la bateria pertenece al usuario identificado
+        // revisar si la bateria actual pertenece al usuario identificado
 
         if (bateria.propietario.toString() !== req.usuario.id) {
             return res.status(401).json({ msg: 'No autorizado' });
         }
 
+
         // Eliminar
 
         await Bateria.findOneAndRemove({_id: req.params.id});
-        res.json({msg: 'Bateria eliminada correctamente'});
+        res.json({msg: 'Tarea eliminada correctamente'});
 
     } catch (error) {
         console.log(error);

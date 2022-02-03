@@ -16,7 +16,6 @@ router.post("/",
     check("voltaje", "El voltaje es obligatorio").not().isEmpty(),
     check("amperios", "Los amperios es obligatorio").not().isEmpty(),
     check("precio", "El precio es obligatorio").not().isEmpty(),
-    check("propietario", "El propietario es obligatorio").not().isEmpty(),
   ],
   bateriaController.crearBateria
 );
@@ -38,7 +37,6 @@ router.delete("/",
     check("voltaje", "El voltaje es obligatorio").not().isEmpty(),
     check("amperios", "Los amperios es obligatorio").not().isEmpty(),
     check("precio", "El precio es obligatorio").not().isEmpty(),
-    check("propietario", "El propietario es obligatorio").not().isEmpty(),
   ],
   bateriaController.eliminarBateria
 );

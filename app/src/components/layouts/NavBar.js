@@ -17,8 +17,6 @@ const NavBar = () => {
   }, []);
 
 
-
-
   return (
     <nav className="navbar navbar-expand-sm bg-danger navbar-dark sticky-top">
       <div className="container-fluid">

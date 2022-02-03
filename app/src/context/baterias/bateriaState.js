@@ -72,15 +72,16 @@ const BateriaState = props => {
 
     })
 
-    const editarBateria = ((bateria) => {
+    const editarBateria = (async (bateria) => {
 
         try {
-            const resultado = await clienteAxios.put(`/api/tareas/${bateria._id}`, bateria);
+            const resultado = await clienteAxios.put(`/api/baterias/${bateria._id}`, bateria);
             console.log(resultado);
             dispatch({
                 type: EDITAR_BATERIA,
                 payload: resultado.data.bateria
             })
+            obtenerBaterias()
         } catch (error) {
             console.log(error);
         }

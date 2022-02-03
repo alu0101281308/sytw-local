@@ -53,6 +53,7 @@ exports.editarBaterias = async (req, res) => {
     const nuevaBateria = {};
     
     if(marca && estado && voltaje && amperios && precio) {
+        nuevaBateria.propietario = req.usuario.id;
         nuevaBateria.marca = marca;
         nuevaBateria.estado = estado;
         nuevaBateria.voltaje = voltaje;
@@ -65,11 +66,11 @@ exports.editarBaterias = async (req, res) => {
         // revisar el ID 
         let bateria = await Bateria.findById(req.params.id);
 
-        if(!proyecto) {
-            return res.status(404).json({msg: 'Proyecto no encontrado'})
+        if(!bateria) {
+            return res.status(404).json({msg: 'Bateria no encontrada'})
         }
 
-        // verificar el creador del proyecto
+        // verificar el creador de la bateria
         if(bateria.propietario.toString() !== req.usuario.id ) {
             return res.status(401).json({msg: 'No Autorizado'});
         }

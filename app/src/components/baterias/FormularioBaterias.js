@@ -51,7 +51,7 @@ const FormularioBaterias = () => {
 
         // validaciones
 
-        if (marca.trim() === '' || estado.trim() === '' || voltaje.trim() === '' || amperios.trim() === '' || precio.trim() === '') {
+        if (marca.trim() === '' || estado.trim() === '' || voltaje === '' || amperios === '' || precio === '') {
             mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
             return;
         }

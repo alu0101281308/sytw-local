@@ -16,6 +16,7 @@ exports.crearBateria = async (req, res) => {
 
         // guardar bateria
         await bateria.save();
+        res.json({msg: "Bateria guardada exitosamente"});
 
     } catch (error) {
         console.log(error);

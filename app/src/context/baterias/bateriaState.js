@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react';
 import BateriaContext from './bateriaContext';
 import BateriaReducer from './bateriaReducer';
-import { v4 as uuid } from "uuid";
+import clienteAxios from '../../config/axios';
+//import { v4 as uuid } from "uuid";
 
 import {
     OBTENER_BATERIAS,
@@ -28,19 +29,31 @@ const BateriaState = props => {
     const [state, dispatch] = useReducer(BateriaReducer, initialState)
 
 
-    const obtenerBaterias = (() => {
-        dispatch({
-            type: OBTENER_BATERIAS,
-            payload: baterias
-        })
+    const obtenerBaterias = (async (usuario) => {
+
+        console.log(usuario);
+
+        try {
+            const resultado = await clienteAxios.get('/api/baterias', { params: { usuario }});
+            console.log(resultado);
+            dispatch({
+                type: OBTENER_BATERIAS,
+                payload: resultado.data.baterias
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
+
     })
 
-    const agregarBateria = ((bateria) => {
-        bateria.id = uuid();
-        dispatch({
-            type: AGREGAR_BATERIA,
-            payload: bateria
-        })
+    const agregarBateria = (async (bateria) => {
+        try {
+            const resultado = await clienteAxios.post('/api/baterias', bateria);
+            console.log(resultado);
+        } catch (error) {
+            console.log(error)
+        }
     })
 
     const bateriaActual = ((bateria)=>{

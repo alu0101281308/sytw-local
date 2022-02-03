@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const bateriaController = require("../controllers/bateriaController");
 const { check } = require("express-validator");
+const auth = require('../middleware/auth');
+
 
 // Crea una bateria
 // api/baterias

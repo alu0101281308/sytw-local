@@ -10,6 +10,22 @@ exports.consultarBaterias = async (req, res) => {
   }
 };
 
+exports.verBateria = async (req, res) => {
+  try {
+    let bateria = await Bateria.findById(req.params.id);
+
+    if (!bateria) {
+      return res.status(404).json({ msg: "No existe esa bateria" });
+    }
+
+    // Devuelve bateria
+    res.json(bateria);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Algo salio mal en eliminar bateria");
+  }
+};
+
 exports.eliminarBateriaComprada = async (req, res) => {
   try {
     let bateria = await Bateria.findById(req.params.id);

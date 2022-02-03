@@ -11,9 +11,16 @@ const FormularioBaterias = () => {
     const bateriaContext = useContext(BateriaContext);
     const { bateriaactual, agregarBateria, editarBateria, obtenerBaterias } = bateriaContext
 
+    const imageChange = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          setBateria({...bateria,
+                    img : e.target.files[0]});
+        }
+      };
+
 
     const [bateria, setBateria] = useState({
-        //imagen
+        img: '',
         marca: '',
         estado: '',
         voltaje: '',
@@ -21,7 +28,7 @@ const FormularioBaterias = () => {
         precio: ''
     })
 
-    const { marca, estado, voltaje, amperios, precio } = bateria;
+    const { img, marca, estado, voltaje, amperios, precio } = bateria;
 
     useEffect(() => {
         if (bateriaactual) {
@@ -29,6 +36,7 @@ const FormularioBaterias = () => {
             setBateria(bateria)
         } else {
             setBateria({
+                img: '',
                 marca: '',
                 estado: '',
                 voltaje: '',
@@ -65,11 +73,11 @@ const FormularioBaterias = () => {
             // tarea.estado = false;
             // tarea.id = uuid()
             // agregarTarea(tarea);
-            agregarBateria(bateria); 
+            agregarBateria(bateria);
 
         } else {
             editarBateria(bateria);
-            
+
         }
 
         //obtenerBaterias()
@@ -91,8 +99,9 @@ const FormularioBaterias = () => {
             <form onSubmit={onSubmitBateria}>
                 <div className="">
                     <p>Imagen de la batería</p>
-                    <img className="" src={NullImg} width="50" height="50" alt="Null Img" />
+                    <img className="mb-2" src={ bateria.img ? URL.createObjectURL(bateria.img) : NullImg} width="100" height="100" alt="Null Img" />
                 </div>
+                <input class="form-control" type="file" name='img' onChange={imageChange} />
                 <hr />
                 <div className="row">
                     <div className="col">

@@ -3,7 +3,7 @@ import BateriaVenta from './BateriaVenta';
 import TiendaContext from '../../context/tienda/tiendaContext';
 
 
-const Tienda = () => {  
+const Tienda = () => {
 
     const tiendaContext = useContext(TiendaContext);
     const { obtenerBateriasVenta } = tiendaContext;
@@ -11,13 +11,16 @@ const Tienda = () => {
     useEffect(() => {
         obtenerBateriasVenta();
     }, []);
-    
+
 
     return (
         <>
-            {/* <BateriaVenta /> */}
+            <div class="container">
+
+                <BateriaVenta />
+            </div>
         </>
     );
 }
- 
+
 export default Tienda;

@@ -24,3 +24,5 @@ app.use('/api/auth', require('./routes/auth'));
 app.listen(PORT, () => {
     console.log(`El servidor esta funcionando por el puerto ${PORT}`);
 })
+
+module.exports = app

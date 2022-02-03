@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import BateriaContext from '../../context/baterias/bateriaContext';
+import AlertaContext from '../../context/alertas/alertaContext';
 import NullImg from '../../images/subir-imagen.png';
 
 const FormularioBaterias = () => {
+
+    const alertaContext = useContext(AlertaContext);
+    const { alerta, mostrarAlerta } = alertaContext
+
+    const bateriaContext = useContext(BateriaContext);
+    const { bateriaactual, agregarBateria } = bateriaContext
 
     const [bateria, setBateria] = useState({
         //imagen
@@ -13,6 +21,21 @@ const FormularioBaterias = () => {
     })
 
     const { marca, estado, voltaje, amperios, precio } = bateria;
+
+    useEffect(() => {
+        if (bateriaactual) {
+            const [bateria] = bateriaactual
+            setBateria(bateria)
+        } else {
+            setBateria({
+                marca: '',
+                estado: '',
+                voltaje: '',
+                amperios: '',
+                precio: ''
+            })
+        }
+    }, [bateriaactual]);
 
 
     const onChange = e => {
@@ -27,14 +50,30 @@ const FormularioBaterias = () => {
 
         // validaciones
 
+        if (marca.trim() === '' || estado.trim() === '' || voltaje.trim() === '' || amperios.trim() === '' || precio.trim() === '') {
+            mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
+            return;
+        }
+
         // Agregar o actualizar
 
+        agregarBateria(bateria);
+
         // limpiar campos
+
+        setBateria({
+            marca: '',
+            estado: '',
+            voltaje: '',
+            amperios: '',
+            precio: ''
+        })
     });
 
 
     return (
         <div className="container rounded border border-dark mt-5 mb-5">
+            {alerta ? (<div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>) : null}
             <form onSubmit={onSubmitNuevaBateria}>
                 <div className="">
                     <p>Imagen de la batería</p>
@@ -45,7 +84,8 @@ const FormularioBaterias = () => {
                     <div className="col">
                         <div className="mt-2 mb-2">
                             <label htmlFor="select">Marca</label>
-                            <select className="form-select" name="marca" onChange={onChange}>
+                            <select className="form-select" name="marca" value={marca} onChange={onChange}>
+                                <option value="" selected disabled hidden>Seleciona una marca</option>
                                 <option value="Yuasa">Yuasa</option>
                                 <option value="Bosh">Bosh</option>
                                 <option value="Innpo">Innpo</option>
@@ -59,7 +99,8 @@ const FormularioBaterias = () => {
                     <div className="col">
                         <div className="mt-2 mb-2">
                             <label htmlFor="select">Estado de la batería</label>
-                            <select className="form-select" name="estado" onChange={onChange}>
+                            <select className="form-select" name="estado" value={estado} onChange={onChange}>
+                                <option value="" selected disabled hidden>Seleciona un estado</option>
                                 <option value="nuevo">Nueva</option>
                                 <option value="buen-estado">Buen estado</option>
                                 <option value="condiciones-aceptables">Condiciones aceptables</option>
@@ -117,8 +158,7 @@ const FormularioBaterias = () => {
                     <input
                         type="submit"
                         className="btn btn-primary btn-block"
-                        value="Publicar Batería"
-                    //value={tareaseleccionada ? 'Editar tarea' : 'Agregar tarea'}
+                        value={bateriaactual ? 'Editar tarea' : 'Agregar tarea'}
                     />
                 </div>
             </form>

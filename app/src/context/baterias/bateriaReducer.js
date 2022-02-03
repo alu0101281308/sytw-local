@@ -1,47 +1,37 @@
-import { 
-    FORMULARIO_BATERIA,
+import {
     OBTENER_BATERIAS,
     AGREGAR_BATERIA,
-    VALIDAR_FORMULARIO,
     BATERIA_ACTUAL,
     ELIMINAR_BATERIA,
+    EDITAR_BATERIA
 } from "../../types";
 
 export default (state, action) => {
     switch (action.type) {
-        // case FORMULARIO_PROYECTO:
-        //     return {
-        //         ...state,
-        //         formulario: true
-        //     }
+
         case OBTENER_BATERIAS:
             return {
                 ...state,
                 baterias: action.payload
             }
-        // case AGREGAR_PROYECTO:
-        //     return {
-        //         ...state,
-        //         proyectos: [...state.proyectos, action.payload],
-        //         formulario: false,
-        //         errorformulario: false
-        //     }
-        // case VALIDAR_FORMULARIO:
-        //     return {
-        //         ...state,
-        //         errorformulario: true
-        //     }
-        // case PROYECTO_ACTUAL:
-        //     return {
-        //         ...state,
-        //         proyectoactual: state.proyectos.filter((proyecto) => proyecto.id === action.payload.id)
-        //     }
-        // case ELIMINAR_PROYECTO:
-        //     return {
-        //         ...state,
-        //         proyectos: state.proyectos.filter((proyecto) => proyecto.id !== action.payload.id),
-        //         proyectoactual: null
-        //     }
+        case AGREGAR_BATERIA:
+            return {
+                ...state,
+                baterias: [...state.baterias, action.payload],
+            }
+
+        case BATERIA_ACTUAL:
+            return {
+                ...state,
+                bateriaactual: state.baterias.filter((bateria) => bateria.id === action.payload.id)
+            }
+
+        case ELIMINAR_BATERIA:
+            return {
+                ...state,
+                baterias: state.baterias.filter((bateria) => bateria.id !== action.payload.id),
+                bateriaactual: null
+            }
         default:
             return state;
     }

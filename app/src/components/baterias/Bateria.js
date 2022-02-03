@@ -3,13 +3,15 @@ import BateriaContext from '../../context/baterias/bateriaContext';
 import NullImg from '../../images/subir-imagen.png';
 
 
-const Bateria = ({ bateria }) => {
+const Bateria = ({bateria}) => {
 
     const bateriaContext = useContext(BateriaContext);
-    const { bateriaActual } = bateriaContext;
+    const { obtenerBaterias, bateriaActual, eliminarBateria } = bateriaContext;
 
-    const onClickBateria = (() => {
-        bateriaActual(bateria);
+
+    const onClickEliminar= (() => {
+        eliminarBateria(bateria);
+        obtenerBaterias();
     })
 
     return (
@@ -26,14 +28,14 @@ const Bateria = ({ bateria }) => {
                     <button
                         type="button"
                         className="btn btn-primary"
-
+                        onClick={() => bateriaActual(bateria)}
                     >
                         Editar
                     </button>
                     <button
                         type="button"
                         className="btn btn-danger"
-
+                        onClick={onClickEliminar}
                     >
                         Eliminar
                     </button>

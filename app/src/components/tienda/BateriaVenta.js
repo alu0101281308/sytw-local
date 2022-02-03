@@ -8,23 +8,22 @@ const BateriaVenta = () => {
 
     return (
         <>
-            {bateriasventa.map(bateria => {
+            <div className="row">
+                {bateriasventa.map(bateria => (
 
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card">
-                            <img class="card-img-top mx-auto" src="images/baterias/b1.webp" class="w-100" alt="Card image" />
-                            <div class="card-body">
-                                <h6 class="card-title">Batería Tudor TB740</h6>
-                                <p class="card-text">50 €</p>
-                                <a href="articulo.html" class="btn btn-outline-primary">Comprar</a>
+                    <div className="col-sm-3 mt-2 mb-2">
+                        <div className="card">
+                            <img className="card-img-top mx-auto" src="images/baterias/b1.webp" alt="Card image" />
+                            <div className="card-body">
+                                <h6 className="card-title">Bateria {bateria.marca} - {bateria.voltaje}V</h6>
+                                <p className="card-text">{bateria.precio} €</p>
+                                <a href="articulo.html" className="btn btn-outline-primary">Comprar</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            })}
 
-
+                ))}
+            </div>
         </>
     );
 }

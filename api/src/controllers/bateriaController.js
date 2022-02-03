@@ -39,6 +39,52 @@ exports.consultarBaterias = async (req, res) => {
     } 
 }
 
+// Actualiza una bateria
+exports.editarBaterias = async (req, res) => {
+
+    // Revisar si hay errores
+    const errores = validationResult(req);
+    if( !errores.isEmpty() ) {
+        return res.status(400).json({errores: errores.array() })
+    }
+
+    // extraer la información de la bateria
+    const { marca, estado, voltaje, amperios, precio } = req.body;
+    const nuevaBateria = {};
+    
+    if(marca && estado && voltaje && amperios && precio) {
+        nuevaBateria.marca = marca;
+        nuevaBateria.estado = estado;
+        nuevaBateria.voltaje = voltaje;
+        nuevaBateria.amperios = amperios;
+        nuevaBateria.precio = precio;
+    }
+
+    try {
+
+        // revisar el ID 
+        let bateria = await Bateria.findById(req.params.id);
+
+        if(!proyecto) {
+            return res.status(404).json({msg: 'Proyecto no encontrado'})
+        }
+
+        // verificar el creador del proyecto
+        if(bateria.propietario.toString() !== req.usuario.id ) {
+            return res.status(401).json({msg: 'No Autorizado'});
+        }
+
+        // actualizar
+        bateria = await Bateria.findByIdAndUpdate({ _id: req.params.id }, { $set : nuevaBateria}, { new: true });
+
+        res.json({bateria});
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error en el servidor');
+    }
+}
+
 
 exports.eliminarBateria = async (req, res) => {
 

@@ -14,27 +14,21 @@ import {
 
 const BateriaState = props => {
 
-    const baterias = [
-        { id: 1, marca: 'yuasa', estado: 'nuevo', voltaje: '0', amperios: '10000A', precio: '120' },
-        { id: 2, marca: 'yuasa', estado: 'nuevo', voltaje: '123GO', amperios: '4A', precio: '120' },
-        { id: 3, marca: 'yuasa', estado: 'nuevo', voltaje: '999999LGTB', amperios: 'INFINITE-AA', precio: '3 Almas' }
-    ]
 
     const initialState = {
         baterias: [],
-        bateriaactual: null
+        bateriaactual: null,
     }
 
     //Dispatch para ejecutar acciones
     const [state, dispatch] = useReducer(BateriaReducer, initialState)
 
 
-    const obtenerBaterias = (async (usuario) => {
+    const obtenerBaterias = (async () => {
 
-        console.log(usuario);
 
         try {
-            const resultado = await clienteAxios.get('/api/baterias', { params: { usuario }});
+            const resultado = await clienteAxios.get('/api/baterias');
             console.log(resultado);
             dispatch({
                 type: OBTENER_BATERIAS,
@@ -51,6 +45,10 @@ const BateriaState = props => {
         try {
             const resultado = await clienteAxios.post('/api/baterias', bateria);
             console.log(resultado);
+            dispatch({
+                type: AGREGAR_BATERIA,
+                payload: bateria
+            })
         } catch (error) {
             console.log(error)
         }

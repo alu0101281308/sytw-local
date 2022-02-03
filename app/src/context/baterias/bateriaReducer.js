@@ -12,7 +12,7 @@ export default (state, action) => {
         case OBTENER_BATERIAS:
             return {
                 ...state,
-                baterias: action.payload
+                baterias: action.payload,
             }
         case AGREGAR_BATERIA:
             return {

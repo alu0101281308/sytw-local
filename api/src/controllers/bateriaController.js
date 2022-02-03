@@ -95,7 +95,7 @@ exports.eliminarBateria = async (req, res) => {
 
 
         if (!bateria) {
-            return res.status(404).json({ msg: 'No existe esa tarea' });
+            return res.status(404).json({ msg: 'No existe esa bateria' });
         }
 
         const propietario = await Usuario.findById(req.usuario.id);

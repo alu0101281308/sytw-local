@@ -29,15 +29,8 @@ router.get("/",
 
 // Elimina una bateria
 // api/baterias
-router.delete("/",
+router.delete("/:id",
   auth,
-  [
-    check("marca", "La marca es obligatorio").not().isEmpty(),
-    check("estado", "El estado es obligatorio").not().isEmpty(),
-    check("voltaje", "El voltaje es obligatorio").not().isEmpty(),
-    check("amperios", "Los amperios es obligatorio").not().isEmpty(),
-    check("precio", "El precio es obligatorio").not().isEmpty(),
-  ],
   bateriaController.eliminarBateria
 );
 

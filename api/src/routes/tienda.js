@@ -8,4 +8,10 @@ router.get("/",
     tiendaController.consultarBaterias
 );
 
+// Elimina una bateria que fue comprada
+// api/tienda
+router.delete("/:id",
+    tiendaController.eliminarBateriaComprada
+);
+
 module.exports = router;

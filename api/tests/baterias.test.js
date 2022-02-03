@@ -18,7 +18,7 @@ describe("Tests para las rutas de las baterias", () => {
       .expect("Content-Type", /json/)
       .expect((res) => {
         token = res.body.token;
-       })
+      })
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -31,13 +31,13 @@ describe("Tests para las rutas de las baterias", () => {
       estado: "Bueno",
       voltaje: 12,
       amperios: 60,
-      precio: 65
+      precio: 65,
     };
     request(app)
       .post("/api/baterias")
       .send(bateria)
       .set("Accept", "application/json")
-      .set('x-auth-token', token)
+      .set("x-auth-token", token)
       .expect("Content-Type", /json/)
       .expect(200)
       .end((err) => {
@@ -49,11 +49,11 @@ describe("Tests para las rutas de las baterias", () => {
     request(app)
       .get("/api/baterias")
       .set("Accept", "application/json")
-      .set('x-auth-token', token)
+      .set("x-auth-token", token)
       .expect("Content-Type", /json/)
       .expect((res) => {
         idBateria = res.body.baterias[0]._id;
-       })
+      })
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -66,17 +66,17 @@ describe("Tests para las rutas de las baterias", () => {
       estado: "Malo",
       voltaje: 12,
       amperios: 60,
-      precio: 45
+      precio: 45,
     };
     request(app)
       .put(`/api/baterias/${idBateria}`)
       .send(bateria)
       .set("Accept", "application/json")
-      .set('x-auth-token', token)
+      .set("x-auth-token", token)
       .expect("Content-Type", /json/)
       .expect((res) => {
         idBateria = res.body.bateria._id;
-       })
+      })
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -87,7 +87,7 @@ describe("Tests para las rutas de las baterias", () => {
     request(app)
       .delete(`/api/baterias/${idBateria}`)
       .set("Accept", "application/json")
-      .set('x-auth-token', token)
+      .set("x-auth-token", token)
       .expect("Content-Type", /json/)
       .expect(200)
       .end((err) => {
@@ -112,4 +112,3 @@ describe("Tests para las rutas de las baterias", () => {
       });
   });
 });
-

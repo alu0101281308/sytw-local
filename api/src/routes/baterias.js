@@ -30,7 +30,7 @@ router.get("/",
   bateriaController.consultarBaterias
 );
 
-// Actualizar bateria via ID
+// Actualizar bateria
 router.put('/:id', 
     auth,
     [

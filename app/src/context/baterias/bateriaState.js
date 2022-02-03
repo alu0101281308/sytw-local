@@ -26,7 +26,8 @@ const BateriaState = props => {
 
     const obtenerBaterias = (async () => {
         try {
-            const resultado = await clienteAxios.get('/api/baterias');  
+            const resultado = await clienteAxios.get('/api/baterias'); 
+            console.log(resultado); 
             dispatch({
                 type: OBTENER_BATERIAS,
                 payload: resultado.data.baterias

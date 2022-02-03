@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import BateriaVenta from './BateriaVenta';
 import TiendaContext from '../../context/tienda/tiendaContext';
 
@@ -9,13 +9,13 @@ const Tienda = () => {
     const { obtenerBateriasVenta } = tiendaContext;
 
     useEffect(() => {
-      
+        obtenerBateriasVenta();
     }, []);
     
 
     return (
         <>
-            <BateriaVenta />
+            {/* <BateriaVenta /> */}
         </>
     );
 }

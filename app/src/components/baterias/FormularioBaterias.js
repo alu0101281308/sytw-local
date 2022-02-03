@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import BateriaContext from '../../context/baterias/bateriaContext';
 import AlertaContext from '../../context/alertas/alertaContext';
-import AuthContext from '../../context/autenticacion/authContext';
 import NullImg from '../../images/subir-imagen.png';
 
 const FormularioBaterias = () => {
@@ -12,8 +11,6 @@ const FormularioBaterias = () => {
     const bateriaContext = useContext(BateriaContext);
     const { bateriaactual, agregarBateria, editarBateria, obtenerBaterias } = bateriaContext
 
-    const authContext = useContext(AuthContext);
-    const { usuario } = authContext
 
     const [bateria, setBateria] = useState({
         //imagen
@@ -68,7 +65,6 @@ const FormularioBaterias = () => {
             // tarea.estado = false;
             // tarea.id = uuid()
             // agregarTarea(tarea);
-            bateria.propietario = usuario._id;
             agregarBateria(bateria); 
 
         } else {

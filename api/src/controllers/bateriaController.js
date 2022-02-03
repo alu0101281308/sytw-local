@@ -52,10 +52,10 @@ exports.eliminarBateria = async (req, res) => {
             return res.status(404).json({ msg: 'No existe esa tarea' });
         }
 
-        const propietario = await Proyecto.findById(usuario);
+        const propietario = await Usuario.findById(req.usuario.id);
 
         if (!propietario) {
-            return res.status(404).json({ msg: 'Proyecto no encontrado' });
+            return res.status(404).json({ msg: 'Usuario no encontrado' });
         }
 
         // revisar si la bateria actual pertenece al usuario identificado

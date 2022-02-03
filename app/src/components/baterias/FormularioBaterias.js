@@ -128,7 +128,7 @@ const FormularioBaterias = () => {
                         <div className="mt-2 mb-2">
                             <label htmlFor="voltaje">Voltaje</label>
                             <input
-                                type="text"
+                                type="number"
                                 className="form-control"
                                 id="voltaje"
                                 name="voltaje"
@@ -142,7 +142,7 @@ const FormularioBaterias = () => {
                         <div className="mt-2 mb-2">
                             <label htmlFor="amperios">Amperios</label>
                             <input
-                                type="text"
+                                type="number"
                                 className="form-control"
                                 id="amperios"
                                 name="amperios"
@@ -156,7 +156,7 @@ const FormularioBaterias = () => {
                         <div className="mt-2 mb-2">
                             <label htmlFor="precio">Precio</label>
                             <input
-                                type="text"
+                                type="number"
                                 className="form-control"
                                 id="precio"
                                 name="precio"

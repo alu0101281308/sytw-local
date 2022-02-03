@@ -16,6 +16,10 @@ router.post("/",
     check("voltaje", "El voltaje es obligatorio").not().isEmpty(),
     check("amperios", "Los amperios es obligatorio").not().isEmpty(),
     check("precio", "El precio es obligatorio").not().isEmpty(),
+    check("precio", "El precio debe ser un numero").isNumeric(),
+    check("voltaje", "El voltaje debe ser un numero").isNumeric(),
+    check("amperios", "Los amperios deben ser un numero").isNumeric()
+
   ],
   bateriaController.crearBateria
 );

@@ -41,7 +41,6 @@ exports.consultarBaterias = async (req, res) => {
 
 
 exports.eliminarBateria = async (req, res) => {
-    const { usuario } = req.body;
 
     try {
         

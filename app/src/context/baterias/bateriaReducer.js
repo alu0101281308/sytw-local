@@ -23,19 +23,19 @@ export default (state, action) => {
         case BATERIA_ACTUAL:
             return {
                 ...state,
-                bateriaactual: state.baterias.filter((bateria) => bateria.id === action.payload.id)
+                bateriaactual: state.baterias.filter((bateria) => bateria._id === action.payload._id)
             }
 
         case ELIMINAR_BATERIA:
             return {
                 ...state,
-                baterias: state.baterias.filter((bateria) => bateria.id !== action.payload.id),
+                baterias: state.baterias.filter((bateria) => bateria._id !== action.payload._id),
                 bateriaactual: null
             }
         case EDITAR_BATERIA:
             return {
                 ...state,
-                baterias : state.baterias.filter((bateria) => bateria.id === action.payload.id ? action.payload : bateria),
+                baterias : state.baterias.filter((bateria) => bateria._id === action.payload._id ? action.payload : bateria),
                 bateriaactual : null
             }
         default:

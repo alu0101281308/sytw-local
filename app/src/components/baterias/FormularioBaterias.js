@@ -9,7 +9,7 @@ const FormularioBaterias = () => {
     const { alerta, mostrarAlerta } = alertaContext
 
     const bateriaContext = useContext(BateriaContext);
-    const { bateriaactual, agregarBateria } = bateriaContext
+    const { bateriaactual, agregarBateria, editarBateria, obtenerBaterias } = bateriaContext
 
     const [bateria, setBateria] = useState({
         //imagen
@@ -45,7 +45,7 @@ const FormularioBaterias = () => {
         })
     }
 
-    const onSubmitNuevaBateria = ((e) => {
+    const onSubmitBateria = ((e) => {
         e.preventDefault();
 
         // validaciones
@@ -57,8 +57,21 @@ const FormularioBaterias = () => {
 
         // Agregar o actualizar
 
-        agregarBateria(bateria);
+        if (!bateriaactual) {
 
+            // Agregar tarea
+            // tarea.proyectoId = proyecto.id;
+            // tarea.estado = false;
+            // tarea.id = uuid()
+            // agregarTarea(tarea);
+            agregarBateria(bateria); 
+
+        } else {
+            editarBateria(bateria);
+            
+        }
+
+        //obtenerBaterias()
         // limpiar campos
 
         setBateria({
@@ -74,7 +87,7 @@ const FormularioBaterias = () => {
     return (
         <div className="container rounded border border-dark mt-5 mb-5">
             {alerta ? (<div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>) : null}
-            <form onSubmit={onSubmitNuevaBateria}>
+            <form onSubmit={onSubmitBateria}>
                 <div className="">
                     <p>Imagen de la batería</p>
                     <img className="" src={NullImg} width="50" height="50" alt="Null Img" />

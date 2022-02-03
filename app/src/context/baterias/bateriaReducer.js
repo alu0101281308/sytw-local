@@ -32,6 +32,12 @@ export default (state, action) => {
                 baterias: state.baterias.filter((bateria) => bateria.id !== action.payload.id),
                 bateriaactual: null
             }
+        case EDITAR_BATERIA:
+            return {
+                ...state,
+                baterias : state.baterias.filter((bateria) => bateria.id === action.payload.id ? action.payload : bateria),
+                bateriaactual : null
+            }
         default:
             return state;
     }

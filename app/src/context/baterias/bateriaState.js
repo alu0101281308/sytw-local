@@ -59,7 +59,7 @@ const BateriaState = props => {
 
     const editarBateria = ((bateria) => {
         dispatch({
-            type: EDITAR_BATERIA
+            type: EDITAR_BATERIA,
             payload: bateria
         })
     })
@@ -73,7 +73,8 @@ const BateriaState = props => {
                 obtenerBaterias,
                 agregarBateria,
                 bateriaActual,
-                eliminarBateria
+                eliminarBateria,
+                editarBateria
             }}
         >
             {props.children}

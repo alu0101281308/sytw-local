@@ -4,7 +4,8 @@ require("dotenv").config({ path: "src/variables.env" });
 const { NODE_ENV } = process.env;
 
 const connection =
-  NODE_ENV === "test" ? process.env.DB_MONGO_TEST : process.env.DB_MONGO;
+  //NODE_ENV === "test" 
+  true ? process.env.DB_MONGO_TEST : process.env.DB_MONGO;
 
 const conectarDB = async () => {
   try {

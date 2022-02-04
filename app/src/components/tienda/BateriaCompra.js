@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import TiendaContext from '../../context/tienda/tiendaContext';
 import AuthContext from '../../context/autenticacion/authContext';
+// import AlertaContext from '../../context/alertas/alertaContext';
+
 
 const BateriaCompra = () => {
 
@@ -9,12 +11,15 @@ const BateriaCompra = () => {
     const navigate = useNavigate();
 
     const tiendaContext = useContext(TiendaContext);
-    const { bateriacompra, cargando, obtenerBateriaID, comprarBateria } = tiendaContext;
+    const { mensaje, bateriacompra, cargando, obtenerBateriaID, comprarBateria } = tiendaContext;
+
+    // const alertaContext = useContext(AlertaContext);
+    // const { alerta, mostrarAlerta } = alertaContext;
 
     const authContext = useContext(AuthContext);
     const { autenticado } = authContext;
 
-    useEffect(() => {
+    useEffect( () => {
         obtenerBateriaID(id);
 
     }, [cargando]);
@@ -22,36 +27,38 @@ const BateriaCompra = () => {
     const onClickComprar = (() => {
         if (autenticado) {
             comprarBateria(id)
-            navigate('/');
+            //navigate('/');
         } else {
             navigate('/login');
         }
     });
 
-    if (!bateriacompra) return <div className='container'><h2>Hubo un error</h2></div>
+    if (!bateriacompra) return <div className='container'><h2>{mensaje.msg}</h2></div>
 
     return (
-        <div className="container border rounded border-dark mt-5 mb-5 d-grid">
-            <div className='titulo-venta'>
-                <h2>Bateria {bateriacompra.marca}</h2>
-            </div>
-            <hr />
-            <div className='imagen-venta'>
-                <img className="mb-2" src={bateriacompra.img} width="300" height="300" alt={'imagen bateria'} />
-            </div>
-            <hr />
-            <h2 className='m-auto'>Descripción</h2>
+        <>
+            <div className="container border rounded border-dark mt-5 mb-5 d-grid">
+                <div className='titulo-venta'>
+                    <h2>Bateria {bateriacompra.marca}</h2>
+                </div>
+                <hr />
+                <div className='imagen-venta'>
+                    <img className="mb-2" src={bateriacompra.img} width="300" height="300" alt={'imagen bateria'} />
+                </div>
+                <hr />
+                <h2 className='m-auto'>Descripción</h2>
 
-            <div className="descripcion-venta">
-                <p>Estado : {bateriacompra.estado}</p>
-                <p>Voltaje : {bateriacompra.voltaje}</p>
-                <p>amperios : {bateriacompra.amperios}</p>
+                <div className="descripcion-venta">
+                    <p>Estado : {bateriacompra.estado}</p>
+                    <p>Voltaje : {bateriacompra.voltaje}</p>
+                    <p>amperios : {bateriacompra.amperios}</p>
+                </div>
+                <div className="venta-precio">
+                    <p>Precio : {bateriacompra.precio} €</p>
+                </div>
+                <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
             </div>
-            <div className="venta-precio">
-                <p>Precio : {bateriacompra.precio} €</p>
-            </div>
-            <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
-        </div>
+        </>
     );
 }
 

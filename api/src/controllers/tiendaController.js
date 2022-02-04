@@ -36,8 +36,8 @@ exports.eliminarBateriaComprada = async (req, res) => {
 
     // Eliminar
 
-    //await Bateria.findOneAndRemove({ _id: req.params.id });
-    res.status(404).json({ msg: "Bateria comprada (eliminada)" });
+    await Bateria.findOneAndRemove({ _id: req.params.id });
+    res.json({ msg: "Bateria comprada (eliminada)" });
   } catch (error) {
     console.log(error);
     res.status(500).send("Algo salio mal en eliminar bateria");

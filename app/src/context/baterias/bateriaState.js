@@ -32,7 +32,6 @@ const BateriaState = props => {
         imagenesbaterias : imagenes,
         baterias: [],
         bateriaactual: null,
-        mensaje : ''
     }
 
     //Dispatch para ejecutar acciones
@@ -55,7 +54,6 @@ const BateriaState = props => {
     const agregarBateria = (async (bateria) => {
         try {
             const resultado = await clienteAxios.post('/api/baterias', bateria);
-            console.log(resultado);
             dispatch({
                 type: AGREGAR_BATERIA,
                 payload: bateria
@@ -73,12 +71,8 @@ const BateriaState = props => {
     })
 
     const eliminarBateria = (async (bateria)=>{
-        console.log(bateria);
         try {
             const resultado = await clienteAxios.delete(`/api/baterias/${bateria._id}`);
-            console.log(resultado);
-
-            
 
             dispatch({
                 type: ELIMINAR_BATERIA,

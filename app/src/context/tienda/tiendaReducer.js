@@ -1,7 +1,9 @@
 import {
     COMPRA_BATERIA,
     TIENDA_BATERIAS,
-    TIENDA_COMPRA
+    TIENDA_COMPRA,
+    COMPRA_ERROR,
+    MENSAJE_TIENDA
 } from "../../types";
 
 export default (state, action) => {
@@ -21,9 +23,12 @@ export default (state, action) => {
                 cargando: false
             }
         case COMPRA_BATERIA:
+        case MENSAJE_TIENDA:
+        case COMPRA_ERROR:
             return {
                 ...state,
                 bateriacompra: null,
+                mensaje: action.payload,
                 cargando: false
             }
         default:

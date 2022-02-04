@@ -7,7 +7,9 @@ import clienteAxios from '../../config/axios';
 import {
     COMPRA_BATERIA,
     TIENDA_BATERIAS,
-    TIENDA_COMPRA
+    TIENDA_COMPRA,
+    COMPRA_ERROR,
+    MENSAJE_TIENDA
 } from "../../types";
 
 const TiendaState = props => {
@@ -16,7 +18,8 @@ const TiendaState = props => {
     const initialState = {
         bateriasventa : [],
         bateriacompra : null,
-        cargando: false
+        cargando: false,
+        mensaje: ''
     }
 
     //Dispatch para ejecutar acciones
@@ -42,18 +45,37 @@ const TiendaState = props => {
                 payload: resultado.data.bateria
             })
         } catch (error) {
-            console.log(error);
+            const mensaje = {
+                msg: 'La bateria no existe.',
+                tipo: 'error-mensaje'
+            }
+            dispatch({
+                type: MENSAJE_TIENDA,
+                payload: mensaje
+            })
         }
     })
 
     const comprarBateria = (async (id) => {
         try {
             const resultado = await clienteAxios.delete(`/api/tienda/comprar/${id}`);  
+            const mensaje = {
+                msg: 'Gracias por tu compra.',
+                tipo: 'success-mensaje'
+            }
             dispatch({
-                type: COMPRA_BATERIA
+                type: COMPRA_BATERIA,
+                payload: mensaje
             })
         } catch (error) {
-            console.log(error);
+            const mensaje = {
+                msg: 'Hubo un error en la compra, intentalo mas tarde',
+                tipo: 'error-mensaje'
+            }
+            dispatch({
+                type: COMPRA_ERROR,
+                payload: mensaje
+            })
         }
     })
 
@@ -63,6 +85,7 @@ const TiendaState = props => {
                 bateriasventa: state.bateriasventa,
                 bateriacompra: state.bateriacompra,
                 cargando: state.cargando,
+                mensaje: state.mensaje,
                 obtenerBateriasVenta,
                 obtenerBateriaID,
                 comprarBateria

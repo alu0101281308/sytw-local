@@ -12,6 +12,7 @@ import Menu from './components/usuarios/Menu';
 import Baterias from './components/baterias/Baterias';
 import BateriaState from './context/baterias/bateriaState';
 import TiendaState from './context/tienda/tiendaState';
+import BateriaCompra from './components/tienda/BateriaCompra';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/" element={<Tienda />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/nueva-cuenta" element={<NuevaCuenta />} />
+                <Route path="/tienda/item/:id" element={<BateriaCompra />} />
                 <Route path="/menu" element={<RutaPrivada />} >
                   <Route index element={<Menu />} />
                   <Route path="baterias" element={<Baterias />} />

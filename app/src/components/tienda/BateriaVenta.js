@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import TiendaContext from '../../context/tienda/tiendaContext';
 
 const BateriaVenta = () => {
+
+    const navigate = useNavigate();
+    const { id } = useParams();
 
     const tiendaContext = useContext(TiendaContext);
     const { bateriasventa } = tiendaContext;
@@ -17,7 +21,7 @@ const BateriaVenta = () => {
                             <div className="card-body">
                                 <h6 className="card-title">Bateria {bateria.marca} - {bateria.voltaje}V</h6>
                                 <p className="card-text">{bateria.precio} €</p>
-                                <a href="articulo.html" className="btn btn-outline-primary">Comprar</a>
+                                <button className="btn btn-outline-primary" onClick={() => navigate(`tienda/item/${bateria._id}`)}> Comprar </button>
                             </div>
                         </div>
                     </div>

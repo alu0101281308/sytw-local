@@ -38,7 +38,60 @@ code {
   border-radius: 0.5rem;
 }
 
-.titulo-venta {
+
+.carta-bateria {
+  border: 1px;
+  border-style: solid;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.carta-imagen {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.carta-body {
+  margin-top: -16px;
+  /* background: linear-gradient(to bottom, rgb(119, 154, 248), white); */
+}
+
+.carta-body .carta-titulo {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.carta-voltaje, .carta-precio {
+  text-align: center;
+}
+
+.carta-boton {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.carta-boton button {
+ font-weight: bold;
+ border-radius: 10px;
+}
+
+.container-venta {
+  border: 1px;
+  border-style: solid;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+
+
+
+
+/* .titulo-venta {
   margin-top: 5px;
   margin-right: auto;
   margin-left: auto;
@@ -62,4 +115,6 @@ code {
 
 .venta-precio {
   margin: auto;
-}
+} */
+
+

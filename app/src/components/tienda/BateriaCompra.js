@@ -2,8 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import TiendaContext from '../../context/tienda/tiendaContext';
 import AuthContext from '../../context/autenticacion/authContext';
-// import AlertaContext from '../../context/alertas/alertaContext';
-
 
 const BateriaCompra = () => {
 
@@ -13,13 +11,10 @@ const BateriaCompra = () => {
     const tiendaContext = useContext(TiendaContext);
     const { mensaje, bateriacompra, cargando, obtenerBateriaID, comprarBateria } = tiendaContext;
 
-    // const alertaContext = useContext(AlertaContext);
-    // const { alerta, mostrarAlerta } = alertaContext;
-
     const authContext = useContext(AuthContext);
     const { autenticado } = authContext;
 
-    useEffect( () => {
+    useEffect(() => {
         obtenerBateriaID(id);
 
     }, [cargando]);
@@ -37,7 +32,36 @@ const BateriaCompra = () => {
 
     return (
         <>
-            <div className="container border rounded border-dark mt-5 mb-5 d-grid">
+
+            <div className="container-venta">
+                <div className="row">
+                    <div className="col">
+                        <div className="imagen-venta">
+                            <img className="mb-2 img-fluid" src={bateriacompra.img}  alt={'imagen bateria'} />
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="titulo-venta">
+                            <h2>Bateria {bateriacompra.marca}</h2>
+                        </div>
+                        <div className="precio-venta">
+                            <p>Precio : {bateriacompra.precio} €</p>
+                        </div>
+                        <div className="descripcion-venta">
+                            <h2 className='m-auto'>Descripción</h2>
+                            <p>Estado : {bateriacompra.estado}</p>
+                            <p>Voltaje : {bateriacompra.voltaje}</p>
+                            <p>amperios : {bateriacompra.amperios}</p>
+                        </div>
+                        <div className="boton-venta">
+                            <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* <div className="container border rounded border-dark mt-5 mb-5 d-grid">
                 <div className='titulo-venta'>
                     <h2>Bateria {bateriacompra.marca}</h2>
                 </div>
@@ -57,7 +81,7 @@ const BateriaCompra = () => {
                     <p>Precio : {bateriacompra.precio} €</p>
                 </div>
                 <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
-            </div>
+            </div> */}
         </>
     );
 }

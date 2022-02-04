@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const BateriasSchema = mongoose.Schema({
+  img: {
+    type: Buffer,
+    required: true,
+  },
   marca: {
     type: String,
     required: true,

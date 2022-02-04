@@ -37,3 +37,29 @@ code {
   margin-bottom: 1rem;
   border-radius: 0.5rem;
 }
+
+.titulo-venta {
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.imagen-venta {
+  margin: auto;
+}
+
+.descripcion-venta {
+  display: flex;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.descripcion-venta p {
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.venta-precio {
+  margin: auto;
+}

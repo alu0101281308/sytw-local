@@ -16,3 +16,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CERRAR_SESION = 'CERRAR_SESION';
 
 export const TIENDA_BATERIAS = 'TIENDA_BATERIAS';
+export const TIENDA_COMPRA = 'TIENDA_COMPRA';
+export const COMPRA_BATERIA = 'COMPRA_BATERIA';
+
+

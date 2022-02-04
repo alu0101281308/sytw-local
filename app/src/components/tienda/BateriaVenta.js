@@ -5,7 +5,7 @@ import TiendaContext from '../../context/tienda/tiendaContext';
 const BateriaVenta = () => {
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    
 
     const tiendaContext = useContext(TiendaContext);
     const { bateriasventa } = tiendaContext;
@@ -13,7 +13,7 @@ const BateriaVenta = () => {
     return (
         <>
             <div className="row">
-                {bateriasventa.map(bateria => (
+                {bateriasventa.map((bateria) => (
 
                     <div className="col-sm-3 mt-2 mb-2">
                         <div className="card">

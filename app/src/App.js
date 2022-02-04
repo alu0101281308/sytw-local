@@ -31,6 +31,7 @@ function App() {
             <BrowserRouter>
               <NavBar />
               <Routes>
+                <Route path="*" element={<h2>Error 404 - Pagina no encontrada</h2>} />
                 <Route path="/" element={<Tienda />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/nueva-cuenta" element={<NuevaCuenta />} />

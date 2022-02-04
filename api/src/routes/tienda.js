@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const tiendaController = require("../controllers/tiendaController");
+const auth = require('../middleware/auth');
 
 // Consulta las baterias de todos los usuarios
 // api/tienda
@@ -16,7 +17,8 @@ router.get("/item/:id",
 
 // Elimina una bateria que fue comprada
 // api/tienda
-router.delete("/:id",
+router.delete("/comprar/:id",
+    auth,
     tiendaController.eliminarBateriaComprada
 );
 

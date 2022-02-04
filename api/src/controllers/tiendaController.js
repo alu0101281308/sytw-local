@@ -19,7 +19,7 @@ exports.verBateria = async (req, res) => {
     }
 
     // Devuelve bateria
-    res.json(bateria);
+    res.json({bateria});
   } catch (error) {
     console.log(error);
     res.status(500).send("Algo salio mal en eliminar bateria");

@@ -13,10 +13,19 @@ const FormularioBaterias = () => {
 
     const imageChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
-          setBateria({...bateria,
-                    img : e.target.files[0]});
+            const [file] = e.target.files;
+            console.log(file);
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+
+            reader.onloadend = () => {
+                setBateria({
+                    ...bateria,
+                    img: reader.result
+                });
+            }
         }
-      };
+    };
 
 
     const [bateria, setBateria] = useState({
@@ -84,6 +93,7 @@ const FormularioBaterias = () => {
         // limpiar campos
 
         setBateria({
+            img: '',
             marca: '',
             estado: '',
             voltaje: '',
@@ -99,9 +109,10 @@ const FormularioBaterias = () => {
             <form onSubmit={onSubmitBateria}>
                 <div className="">
                     <p>Imagen de la batería</p>
-                    <img className="mb-2" src={ bateria.img ? URL.createObjectURL(bateria.img) : NullImg} width="100" height="100" alt="Null Img" />
+                    <img className="mb-2" src={'bateria.img ? bateria.img : NullImg'} width="100" height="100" alt="Null Img" />
+                    {/* <img className="mb-2" src={ bateria.img ? URL.createObjectURL(bateria.img) : NullImg} width="100" height="100" alt="Null Img" /> */}
                 </div>
-                <input class="form-control" type="file" name='img' onChange={imageChange} />
+                <input class="form-control" type="file" name='img' accept='.jpg, jpeg, .gif, .png' onChange={imageChange} />
                 <hr />
                 <div className="row">
                     <div className="col">
@@ -115,7 +126,6 @@ const FormularioBaterias = () => {
                                 <option value="Norauto">Norauto</option>
                                 <option value="Exide">Exide</option>
                                 <option value="Tudor">Tudor</option>
-                                <option value="otra">otra marca</option>
                             </select>
                         </div>
                     </div>

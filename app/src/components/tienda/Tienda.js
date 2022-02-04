@@ -6,17 +6,18 @@ import TiendaContext from '../../context/tienda/tiendaContext';
 const Tienda = () => {
 
     const tiendaContext = useContext(TiendaContext);
-    const { obtenerBateriasVenta } = tiendaContext;
+    const { bateriasventa, obtenerBateriasVenta } = tiendaContext;
+
 
     useEffect(() => {
         obtenerBateriasVenta();
     }, []);
-
+    
+    if(bateriasventa.length === 0) return <div className='container m-5'><h2>No hay baterías en venta en este momento.</h2></div>
 
     return (
         <>
-            <div class="container">
-
+            <div className="container m-5">
                 <BateriaVenta />
             </div>
         </>

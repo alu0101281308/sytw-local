@@ -8,6 +8,12 @@ router.get("/",
     tiendaController.consultarBaterias
 );
 
+// Consulta la bateria seleccionada
+// api/tienda
+router.get("/item/:id",
+    tiendaController.verBateria
+);
+
 // Elimina una bateria que fue comprada
 // api/tienda
 router.delete("/:id",

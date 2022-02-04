@@ -14,10 +14,10 @@ const BateriaVenta = () => {
         <>
             <div className="row">
                 {bateriasventa.map((bateria) => (
-
                     <div className="col-sm-3 mt-2 mb-2">
                         <div className="card">
-                            <img className="card-img-top mx-auto" src="images/baterias/b1.webp" alt="Card image" />
+                        <img className="mb-2" src={bateria.img} width="100" height="100" alt={'imagen bateria'} />
+
                             <div className="card-body">
                                 <h6 className="card-title">Bateria {bateria.marca} - {bateria.voltaje}V</h6>
                                 <p className="card-text">{bateria.precio} €</p>

@@ -3,13 +3,13 @@ import BateriaContext from '../../context/baterias/bateriaContext';
 import NullImg from '../../images/subir-imagen.png';
 
 
-const Bateria = ({bateria}) => {
+const Bateria = ({ bateria }) => {
 
     const bateriaContext = useContext(BateriaContext);
     const { obtenerBaterias, bateriaActual, eliminarBateria } = bateriaContext;
 
 
-    const onClickEliminar= (() => {
+    const onClickEliminar = (() => {
         eliminarBateria(bateria);
         obtenerBaterias();
     })
@@ -18,7 +18,7 @@ const Bateria = ({bateria}) => {
         <div className="container">
 
             <li className='mb-5 mt-5 baterias'>
-                <img className="" src={NullImg} width="50" height="50" alt="Null Img" />
+                <img className="mb-2" src={bateria.img} width="100" height="100" alt={'imagen bateria'} />
                 <p>{bateria.marca}</p>
                 <p>{bateria.estado}</p>
                 <p>{bateria.voltaje}</p>

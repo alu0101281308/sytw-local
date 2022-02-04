@@ -9,23 +9,8 @@ const FormularioBaterias = () => {
     const { alerta, mostrarAlerta } = alertaContext
 
     const bateriaContext = useContext(BateriaContext);
-    const { bateriaactual, agregarBateria, editarBateria, obtenerBaterias } = bateriaContext
+    const { bateriaactual, imagenesbaterias, agregarBateria, editarBateria, obtenerBaterias } = bateriaContext
 
-    const imageChange = (e) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const [file] = e.target.files;
-            console.log(file);
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-
-            reader.onloadend = () => {
-                setBateria({
-                    ...bateria,
-                    img: reader.result
-                });
-            }
-        }
-    };
 
 
     const [bateria, setBateria] = useState({
@@ -57,10 +42,19 @@ const FormularioBaterias = () => {
 
 
     const onChange = e => {
-        setBateria({
-            ...bateria,
-            [e.target.name]: e.target.value
-        })
+
+        if (e.target.name === 'marca') {
+            setBateria({
+                ...bateria,
+                [e.target.name]: e.target.value,
+                img : imagenesbaterias[e.target.value]
+            })
+        } else {
+            setBateria({
+                ...bateria,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
     const onSubmitBateria = ((e) => {
@@ -109,10 +103,8 @@ const FormularioBaterias = () => {
             <form onSubmit={onSubmitBateria}>
                 <div className="">
                     <p>Imagen de la batería</p>
-                    <img className="mb-2" src={'bateria.img ? bateria.img : NullImg'} width="100" height="100" alt="Null Img" />
-                    {/* <img className="mb-2" src={ bateria.img ? URL.createObjectURL(bateria.img) : NullImg} width="100" height="100" alt="Null Img" /> */}
+                    <img className="mb-2" src={bateria.img ? bateria.img : NullImg} width="100" height="100" alt="Null Img" />
                 </div>
-                <input class="form-control" type="file" name='img' accept='.jpg, jpeg, .gif, .png' onChange={imageChange} />
                 <hr />
                 <div className="row">
                     <div className="col">
@@ -120,12 +112,13 @@ const FormularioBaterias = () => {
                             <label htmlFor="select">Marca</label>
                             <select className="form-select" name="marca" value={marca} onChange={onChange}>
                                 <option value="" selected disabled hidden>Seleciona una marca</option>
-                                <option value="Yuasa">Yuasa</option>
-                                <option value="Bosh">Bosh</option>
-                                <option value="Innpo">Innpo</option>
-                                <option value="Norauto">Norauto</option>
-                                <option value="Exide">Exide</option>
-                                <option value="Tudor">Tudor</option>
+                                <option value="yuasa">Yuasa</option>
+                                <option value="bosch">Bosch</option>
+                                <option value="innpo">Innpo</option>
+                                <option value="norauto">Norauto</option>
+                                <option value="exide">Exide</option>
+                                <option value="tudor">Tudor</option>
+                                <option value="varta">Varta</option>
                             </select>
                         </div>
                     </div>
@@ -191,7 +184,7 @@ const FormularioBaterias = () => {
                     <input
                         type="submit"
                         className="btn btn-primary btn-block"
-                        value={bateriaactual ? 'Editar tarea' : 'Agregar tarea'}
+                        value={bateriaactual ? 'Editar batería' : 'Publicar batería'}
                     />
                 </div>
             </form>

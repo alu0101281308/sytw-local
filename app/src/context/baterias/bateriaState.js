@@ -2,7 +2,8 @@ import React, { useReducer } from 'react';
 import BateriaContext from './bateriaContext';
 import BateriaReducer from './bateriaReducer';
 import clienteAxios from '../../config/axios';
-//import { v4 as uuid } from "uuid";
+
+
 
 import {
     OBTENER_BATERIAS,
@@ -12,12 +13,26 @@ import {
     EDITAR_BATERIA
 } from "../../types";
 
+
+
+
 const BateriaState = props => {
+
+    const imagenes = {};
+    imagenes['bosch'] = 'https://drive.google.com/uc?export=view&id=1oYhkawjImeGKWIsBfPhEY9z3VyvA0kcN';
+    imagenes['norauto'] = 'https://drive.google.com/uc?export=view&id=1djOf91ZWtm7-nHCmZ3kRAyXt76ynbR59';
+    imagenes['yuasa'] = 'https://drive.google.com/uc?export=view&id=1YJJE3430LPi6kgR7_HWXb5LYQf_GI2KH';
+    imagenes['innpo'] = 'https://drive.google.com/uc?export=view&id=1XqqkKySVLcv9xrBAHotcnF8Z9W3vB3nY';
+    imagenes['tudor'] = 'https://drive.google.com/uc?export=view&id=1Og9C0fMsyQhFk_N6O_SVybf1wjjI3lhT';
+    imagenes['exide'] = 'https://drive.google.com/uc?export=view&id=19O4I3khj5Gh42K2einLyWOp-TunEsMGI';
+    imagenes['varta'] = 'https://drive.google.com/uc?export=view&id=16awhe9WVfkqKAiFmOadhh2j1sgcysCif';
 
 
     const initialState = {
+        imagenesbaterias : imagenes,
         baterias: [],
         bateriaactual: null,
+        mensaje : ''
     }
 
     //Dispatch para ejecutar acciones
@@ -62,6 +77,9 @@ const BateriaState = props => {
         try {
             const resultado = await clienteAxios.delete(`/api/baterias/${bateria._id}`);
             console.log(resultado);
+
+            
+
             dispatch({
                 type: ELIMINAR_BATERIA,
                 payload: bateria
@@ -94,6 +112,7 @@ const BateriaState = props => {
             value={{
                 baterias: state.baterias,
                 bateriaactual: state.bateriaactual,
+                imagenesbaterias: state.imagenesbaterias,
                 obtenerBaterias,
                 agregarBateria,
                 bateriaActual,

@@ -5,7 +5,7 @@ import AuthContext from '../../context/autenticacion/authContext';
 
 const BateriaCompra = () => {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const tiendaContext = useContext(TiendaContext);
@@ -16,32 +16,32 @@ const BateriaCompra = () => {
 
     useEffect(() => {
         obtenerBateriaID(id);
-        
+
     }, [cargando]);
 
     const onClickComprar = (() => {
-        if(autenticado) {
+        if (autenticado) {
             comprarBateria(id)
             navigate('/');
         } else {
             navigate('/login');
         }
     });
-    
-    if(!bateriacompra) return <div className='container'><h2>Hubo un error</h2></div>
 
-    return ( 
+    if (!bateriacompra) return <div className='container'><h2>Hubo un error</h2></div>
+
+    return (
         <div className="container border rounded border-dark mt-5 mb-5 d-grid">
             <div className='titulo-venta'>
                 <h2>Bateria {bateriacompra.marca}</h2>
             </div>
             <hr />
             <div className='imagen-venta'>
-                <h2>Image</h2>
+                <img className="mb-2" src={bateriacompra.img} width="300" height="300" alt={'imagen bateria'} />
             </div>
             <hr />
             <h2 className='m-auto'>Descripción</h2>
-            
+
             <div className="descripcion-venta">
                 <p>Estado : {bateriacompra.estado}</p>
                 <p>Voltaje : {bateriacompra.voltaje}</p>
@@ -54,5 +54,5 @@ const BateriaCompra = () => {
         </div>
     );
 }
- 
+
 export default BateriaCompra;

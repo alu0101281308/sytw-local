@@ -46,16 +46,17 @@ exports.editarBaterias = async (req, res) => {
   }
 
   // extraer la información de la bateria
-  const { marca, estado, voltaje, amperios, precio } = req.body;
+  const { marca, estado, voltaje, amperios, precio, img } = req.body;
   const nuevaBateria = {};
 
-  if (marca && estado && voltaje && amperios && precio) {
+  if (marca && estado && voltaje && amperios && precio && img) {
     nuevaBateria.propietario = req.usuario.id;
     nuevaBateria.marca = marca;
     nuevaBateria.estado = estado;
     nuevaBateria.voltaje = voltaje;
     nuevaBateria.amperios = amperios;
     nuevaBateria.precio = precio;
+    nuevaBateria.img = img;
   }
 
   try {

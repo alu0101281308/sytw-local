@@ -1,5 +1,4 @@
 const request = require("supertest");
-
 const app = require("../src/index");
 
 describe("Tests para las rutas de los usuarios", () => {

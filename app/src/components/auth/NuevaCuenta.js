@@ -86,11 +86,10 @@ const NuevaCuenta = () => {
     }
 
     return (
-        <div className="container rounded border border-dark mt-5 mb-5">
+        <div className="container-register">
             { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
-
             
-                <h1>Crear cuenta</h1>
+                <h1>Registrarse</h1>
 
                 <form
                  onSubmit={onSubmit}
@@ -102,7 +101,6 @@ const NuevaCuenta = () => {
                             className="form-control" 
                             id="nombre" 
                             name="nombre"
-                            placeholder="Escribe tu nombre" 
                             value={nombre}
                             onChange={onChange}
                         /> 
@@ -115,7 +113,6 @@ const NuevaCuenta = () => {
                             className="form-control" 
                             id="apellido" 
                             name="apellido"
-                            placeholder="Escribe tu apellido" 
                             value={apellido}
                             onChange={onChange}
                         /> 
@@ -128,20 +125,18 @@ const NuevaCuenta = () => {
                             className="form-control" 
                             id="email" 
                             name="email"
-                            placeholder="Enter email" 
                             value={email}
                             onChange={onChange}
                         /> 
                     </div>
 
                     <div className="mb-3 mt-3">
-                        <label htmlFor="password" className="form-label">Password:</label>
+                        <label htmlFor="password" className="form-label">Contraseña:</label>
                         <input 
                             type="password" 
                             className="form-control" 
                             id="password" 
                             name="password"
-                            placeholder="Enter password" 
                             value={password}
                             onChange={onChange}
                         /> 
@@ -149,25 +144,24 @@ const NuevaCuenta = () => {
 
                     
                     <div className="mb-3 mt-3">
-                        <label htmlFor="confirmpassword" className="form-label">Repite el Password:</label>
+                        <label htmlFor="confirmpassword" className="form-label">Repite la contraseña:</label>
                         <input 
                             type="password" 
                             className="form-control" 
                             id="confirmar" 
                             name="confirmar"
-                            placeholder="Repite el password" 
                             value={confirmar}
                             onChange={onChange}
                         /> 
                     </div>
 
                     <div className="campo-form d-grid">
-                        <input type="submit" className="btn btn-primary btn-block" value="Crear cuenta" />
+                        <input type="submit" className="btn botones mb-2" value="Crear cuenta" />
                     </div>
                 </form>
 
                 <Link to={'/login'} className="enlace-cuenta">
-                    Regresar al login
+                    Iniciar Sesión
                 </Link>
             
         </div>

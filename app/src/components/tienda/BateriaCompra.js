@@ -32,59 +32,29 @@ const BateriaCompra = () => {
 
     return (
         <>
-
             <div className="container-venta">
-                <div className="row">
-                    <div className="col">
-                        <div className="imagen-venta">
-                            <img className="mb-2 img-fluid" src={bateriacompra.img}  alt={'imagen bateria'} />
-                        </div>
+                <div className="informacion-venta">
+                    <img className="img-fluid" src={bateriacompra.img}  alt={'imagen bateria'} />
+                    <div className="titulo-venta">
+                        <h2>Bateria {bateriacompra.marca}</h2>
                     </div>
-                    <div className="col informacion-venta">
-                        <div className="titulo-venta">
-                            <h2>Bateria {bateriacompra.marca}</h2>
-                        </div>
+                    <hr />
+                    <div className="precio-venta">
+                        <h3>{bateriacompra.precio}€</h3>
+                    </div>
+                    <hr />
+                    <div className="descripcion-venta">
+                        <p className='texto-izquierdo'>Estado <span className='texto-derecho'>{bateriacompra.estado}</span></p>
                         <hr />
-                        <div className="precio-venta">
-                            <h3>{bateriacompra.precio}€</h3>
-                        </div>
+                        <p className='texto-izquierdo'>Voltaje <span className='texto-derecho'>{bateriacompra.voltaje} V</span></p>
                         <hr />
-                        <div className="descripcion-venta">
-                            <p className='texto-izquierdo'>Estado <span className='texto-derecho'>{bateriacompra.estado}</span></p>
-                            <hr />
-                            <p className='texto-izquierdo'>Voltaje <span className='texto-derecho'>{bateriacompra.voltaje} V</span></p>
-                            <hr />
-                            <p className='texto-izquierdo'>Amperios <span className='texto-derecho'>{bateriacompra.amperios}</span></p>
-                        </div>
-                        <div className="boton-venta">
-                            <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
-                        </div>
+                        <p className='texto-izquierdo'>Amperios <span className='texto-derecho'>{bateriacompra.amperios}</span></p>
+                    </div>
+                    <div className="d-grid">
+                        <button className='btn botones mb-2' onClick={onClickComprar}> Comprar </button>
                     </div>
                 </div>
             </div>
-
-
-            {/* <div className="container border rounded border-dark mt-5 mb-5 d-grid">
-                <div className='titulo-venta'>
-                    <h2>Bateria {bateriacompra.marca}</h2>
-                </div>
-                <hr />
-                <div className='imagen-venta'>
-                    <img className="mb-2" src={bateriacompra.img} width="300" height="300" alt={'imagen bateria'} />
-                </div>
-                <hr />
-                <h2 className='m-auto'>Descripción</h2>
-
-                <div className="descripcion-venta">
-                    <p>Estado : {bateriacompra.estado}</p>
-                    <p>Voltaje : {bateriacompra.voltaje}</p>
-                    <p>amperios : {bateriacompra.amperios}</p>
-                </div>
-                <div className="venta-precio">
-                    <p>Precio : {bateriacompra.precio} €</p>
-                </div>
-                <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>
-            </div> */}
         </>
     );
 }

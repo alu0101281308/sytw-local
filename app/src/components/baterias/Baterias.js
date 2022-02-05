@@ -5,8 +5,10 @@ import ListadoBaterias from './ListadoBaterias';
 const Baterias = () => {
     return (
         <>
+        <div className = "text-center">
             <FormularioBaterias />
             <ListadoBaterias />
+        </div>
         </>
     );
 }

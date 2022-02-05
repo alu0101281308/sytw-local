@@ -34,7 +34,11 @@ const NavBar = () => {
 
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to={"/menu"} className="nav-link">{usuario.nombre}</Link>
+                <p className="navbar-text text-white usuario-navbar">Bienvenido {usuario.nombre}</p>
+              </li>
+
+              <li className="nav-item">
+                <Link to={"/menu"} className="nav-link text-white">Menu</Link>
               </li>
               <li className="nav-item">
                 <button className="btn btn-danger" onClick={() => cerrarSesion()}>cerrar sesión</button>

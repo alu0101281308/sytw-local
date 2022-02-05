@@ -17,7 +17,7 @@ const Tienda = () => {
 
     return (
         <>
-            <div className="container mt-5 mb-5">
+            <div className="container container-tienda mt-5 mb-5">
                 <h2>Baterías en venta</h2>
                 <BateriaVenta />
             </div>

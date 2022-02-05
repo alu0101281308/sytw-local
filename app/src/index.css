@@ -34,10 +34,18 @@ code {
   background-color: var(--blanco);
   padding: 0.5rem 2rem;
   align-items: center;
-  margin-bottom: 1rem;
   border-radius: 0.5rem;
 }
 
+.container-tienda {
+ margin-top: 100px !important;
+ margin-bottom: 100px !important; 
+}
+
+.usuario-navbar {
+  text-transform: capitalize;
+  color: white !important;
+}
 
 .carta-bateria {
   border: 1px;
@@ -87,8 +95,59 @@ code {
   margin-bottom: 200px;
 }
 
+.imagen-venta {
+  text-align: center;
+  padding: auto;
+}
 
+.precio-venta {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 
+.titulo-venta {
+  text-align: center;
+  padding-top: 30px;
+  text-transform: capitalize;
+}
+
+.informacion-venta {
+  padding-right: 40px;
+}
+
+.texto-izquierdo {
+  text-align: left;
+}
+
+.texto-derecho {
+  float: right ;
+}
+
+.boton-venta {
+  text-align: center;
+}
+
+.boton-venta button {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.container-login {
+  border: 1px;
+  border-style: solid;
+  border-radius: 20px;
+  padding-top: 30px;
+  padding-left: 30px; 
+  padding-right: 30px; 
+  padding-bottom: 30px; 
+
+  margin-top: 200px;
+  margin-left: 750px; 
+  margin-right: 750px; 
+  margin-bottom: 200px; 
+
+}
 
 
 /* .titulo-venta {

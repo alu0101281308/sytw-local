@@ -17,24 +17,24 @@ const Bateria = ({ bateria }) => {
     return (
         <div className="container">
 
-            <li className='mb-5 mt-5 baterias'>
+            <li className='list-group-item baterias'>
                 <img className="mb-2" src={bateria.img} width="100" height="100" alt={'imagen bateria'} />
-                <p>{bateria.marca}</p>
-                <p>{bateria.estado}</p>
-                <p>{bateria.voltaje}</p>
-                <p>{bateria.amperios}</p>
-                <p>{bateria.precio} €</p>
+                <p>Marca : {bateria.marca}</p>
+                <p>Estado : {bateria.estado}</p>
+                <p>Voltaje : {bateria.voltaje}</p>
+                <p>Amperios : {bateria.amperios}</p>
+                <p>Precio : {bateria.precio} €</p>
                 <div className="acciones">
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn bg-success text-white rounded-0 rounded-start"
                         onClick={() => bateriaActual(bateria)}
                     >
                         Editar
                     </button>
                     <button
                         type="button"
-                        className="btn btn-danger"
+                        className="btn bg-danger text-white rounded-0 rounded-end"
                         onClick={onClickEliminar}
                     >
                         Eliminar

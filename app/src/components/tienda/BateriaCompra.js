@@ -40,18 +40,21 @@ const BateriaCompra = () => {
                             <img className="mb-2 img-fluid" src={bateriacompra.img}  alt={'imagen bateria'} />
                         </div>
                     </div>
-                    <div className="col">
+                    <div className="col informacion-venta">
                         <div className="titulo-venta">
                             <h2>Bateria {bateriacompra.marca}</h2>
                         </div>
+                        <hr />
                         <div className="precio-venta">
-                            <p>Precio : {bateriacompra.precio} €</p>
+                            <h3>{bateriacompra.precio}€</h3>
                         </div>
+                        <hr />
                         <div className="descripcion-venta">
-                            <h2 className='m-auto'>Descripción</h2>
-                            <p>Estado : {bateriacompra.estado}</p>
-                            <p>Voltaje : {bateriacompra.voltaje}</p>
-                            <p>amperios : {bateriacompra.amperios}</p>
+                            <p className='texto-izquierdo'>Estado <span className='texto-derecho'>{bateriacompra.estado}</span></p>
+                            <hr />
+                            <p className='texto-izquierdo'>Voltaje <span className='texto-derecho'>{bateriacompra.voltaje} V</span></p>
+                            <hr />
+                            <p className='texto-izquierdo'>Amperios <span className='texto-derecho'>{bateriacompra.amperios}</span></p>
                         </div>
                         <div className="boton-venta">
                             <button className='btn btn-success btn-block mb-3' onClick={onClickComprar}> Comprar </button>

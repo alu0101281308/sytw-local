@@ -5,7 +5,7 @@ const Footer = () => {
       <div className="row">
         <div className="col">
           <h6>Universidad de la Laguna</h6>
-          <p>Sistemas y tecnologias web</p>
+          <p>Sistemas y tecnologías web</p>
         </div>
         <div className="col">
           <h6>Prototipo web para la app Batteries Reciclyng</h6>
@@ -23,8 +23,7 @@ const Footer = () => {
       </div>
       <div className="aviso">
         <p>
-          Esta pagina es un prototipo de aplicación, no tiene relación con
-          ninguna marca.
+          Esta página es un prototipo de aplicación, no tiene relación con ninguna marca.
         </p>
       </div>
     </div>

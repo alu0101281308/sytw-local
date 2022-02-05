@@ -54,7 +54,7 @@ const Login = () => {
     }
 
     return (
-        <div className="container rounded border border-dark mt-5 mb-5">
+        <div className="container-login">
             { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
 
 

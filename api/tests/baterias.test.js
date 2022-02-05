@@ -107,6 +107,7 @@ describe("Tests para las rutas de las baterias", () => {
       .send(data)
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
+      .set("x-auth-token", token)
       .expect(200)
       .end((err) => {
         if (err) return done(err);

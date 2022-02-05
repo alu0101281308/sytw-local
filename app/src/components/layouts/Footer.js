@@ -18,7 +18,7 @@ const Footer = () => {
           <h6>Contacto</h6>
           <p>alu0101281308@ull.edu.es</p>
           <p>alu0101166247@ull.edu.es</p>
-          <p>alu0100783315@ull.edu.es</p>
+          <p>alu0101278353@ull.edu.es</p>
         </div>
       </div>
       <div className="aviso">

@@ -53,7 +53,8 @@ code {
 }
 
 .botones {
-  background-color: #6bcac2;
+  background-color: #2666CF;
+  color: white;
   font-weight: bold;
   border-radius: 10px;
 }

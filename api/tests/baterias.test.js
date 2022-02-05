@@ -27,11 +27,12 @@ describe("Tests para las rutas de las baterias", () => {
   });
   it("Crear una bateria al usuario 'Test'", (done) => {
     const bateria = {
-      marca: "Bestia",
+      marca: "bosch",
       estado: "Bueno",
       voltaje: 12,
       amperios: 60,
       precio: 65,
+      img: "https://drive.google.com/uc?export=view&id=1oYhkawjImeGKWIsBfPhEY9z3VyvA0kcN",
     };
     request(app)
       .post("/api/baterias")
@@ -62,11 +63,12 @@ describe("Tests para las rutas de las baterias", () => {
   });
   it("Modifica la bateria del usuario 'Test'", (done) => {
     const bateria = {
-      marca: "BestiaMod",
+      marca: "varta",
       estado: "Malo",
       voltaje: 12,
       amperios: 60,
       precio: 45,
+      img: "https://drive.google.com/uc?export=view&id=16awhe9WVfkqKAiFmOadhh2j1sgcysCif",
     };
     request(app)
       .put(`/api/baterias/${idBateria}`)

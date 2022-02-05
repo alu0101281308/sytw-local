@@ -98,11 +98,11 @@ const FormularioBaterias = () => {
 
 
     return (
-        <div className="container rounded border border-dark mt-5 mb-5">
+        <div className="container-publicar rounded border border-dark mt-5 mb-5">
             {alerta ? (<div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>) : null}
             <form onSubmit={onSubmitBateria}>
                 <div className="">
-                    <p>Imagen de la batería</p>
+
                     <img className="mb-2" src={bateria.img ? bateria.img : NullImg} width="100" height="100" alt="Null Img" />
                 </div>
                 <hr />
@@ -186,8 +186,8 @@ const FormularioBaterias = () => {
                 <div className="mt-2 mb-2">
                     <input
                         type="submit"
-                        className="btn btn-primary btn-block"
-                        value={bateriaactual ? 'Editar batería' : 'Publicar batería'}
+                        className="btn botones"
+                        value={bateriaactual ? 'Editar' : 'Publicar'}
                     />
                 </div>
             </form>

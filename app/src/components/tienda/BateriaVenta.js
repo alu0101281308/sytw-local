@@ -41,7 +41,7 @@ const BateriaVenta = () => {
                             </div>
                             <hr />
                             <div className='carta-boton'>
-                                <button className="btn btn-dark mb-2" onClick={() => navigate(`tienda/item/${bateria._id}`)}> Comprar </button>
+                                <button className="btn botones mb-2" onClick={() => navigate(`tienda/item/${bateria._id}`)}> Comprar </button>
                             </div>
                         </div>
                     </div>

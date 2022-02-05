@@ -52,7 +52,7 @@ const NavBar = () => {
                 <Link to={"/login"} className="nav-link text-white">Iniciar sesión</Link>
               </li>
               <li className="nav-item">
-                <Link to={"/nueva-cuenta"} className="nav-link text-white"> Crear cuenta</Link>
+                <Link to={"/nueva-cuenta"} className="nav-link text-white">Registrarse</Link>
               </li>
             </ul>
 

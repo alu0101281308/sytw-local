@@ -70,32 +70,30 @@ const Login = () => {
                         className="form-control"
                         id="email"
                         name="email"
-                        placeholder="Enter email"
                         value={email}
                         onChange={onChange}
                     />
                 </div>
 
                 <div className="mb-3 mt-3">
-                    <label htmlFor="password" className="form-label">Password:</label>
+                    <label htmlFor="password" className="form-label">Contraseña:</label>
                     <input
                         type="password"
                         className="form-control"
                         id="password"
                         name="password"
-                        placeholder="Enter password"
                         value={password}
                         onChange={onChange}
                     />
                 </div>
 
                 <div className="campo-form d-grid">
-                    <input type="submit" className="btn btn-primary btn-block" value="Iniciar Sesión" />
+                    <input type="submit" className="btn botones mb-2" value="Iniciar Sesión" />
                 </div>
             </form>
 
             <Link to={'/nueva-cuenta'} className="enlace-cuenta">
-                Obtener Cuenta
+                Regístrate
             </Link>
 
         </div>

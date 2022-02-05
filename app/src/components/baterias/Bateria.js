@@ -27,14 +27,14 @@ const Bateria = ({ bateria }) => {
                 <div className="acciones">
                     <button
                         type="button"
-                        className="btn bg-success text-white rounded-0 rounded-start"
+                        className="btn botones"
                         onClick={() => bateriaActual(bateria)}
                     >
                         Editar
                     </button>
                     <button
                         type="button"
-                        className="btn bg-danger text-white rounded-0 rounded-end"
+                        className="btn botones bg-danger"
                         onClick={onClickEliminar}
                     >
                         Eliminar

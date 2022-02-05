@@ -149,6 +149,12 @@ code {
 
 }
 
+.alerta-error {
+  text-align: center;
+  background-color: rgb(230, 78, 78);
+  color: white;
+}
+
 
 /* .titulo-venta {
   margin-top: 5px;

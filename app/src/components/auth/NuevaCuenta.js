@@ -87,9 +87,9 @@ const NuevaCuenta = () => {
 
     return (
         <div className="container-register">
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
+            { alerta ? ( <div data-testid='alerta'className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
             
-                <h1>Registrarse</h1>
+                <h1 data-testid='titulo'>Registrarse</h1>
 
                 <form
                  onSubmit={onSubmit}
@@ -103,6 +103,7 @@ const NuevaCuenta = () => {
                             name="nombre"
                             value={nombre}
                             onChange={onChange}
+                            data-testid='nombre'
                         /> 
                     </div>
 
@@ -115,6 +116,7 @@ const NuevaCuenta = () => {
                             name="apellido"
                             value={apellido}
                             onChange={onChange}
+                            data-testid='apellido'
                         /> 
                     </div>
 
@@ -127,6 +129,7 @@ const NuevaCuenta = () => {
                             name="email"
                             value={email}
                             onChange={onChange}
+                            data-testid='email'
                         /> 
                     </div>
 
@@ -139,6 +142,7 @@ const NuevaCuenta = () => {
                             name="password"
                             value={password}
                             onChange={onChange}
+                            data-testid='password'
                         /> 
                     </div>
 
@@ -152,11 +156,12 @@ const NuevaCuenta = () => {
                             name="confirmar"
                             value={confirmar}
                             onChange={onChange}
+                            data-testid='repassword'
                         /> 
                     </div>
 
                     <div className="campo-form d-grid">
-                        <input type="submit" className="btn botones mb-2" value="Crear cuenta" />
+                        <input data-testid='botonSubmit' type="submit" className="btn botones mb-2" value="Crear cuenta" />
                     </div>
                 </form>
 

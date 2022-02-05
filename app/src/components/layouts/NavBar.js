@@ -41,7 +41,7 @@ const NavBar = () => {
                 <Link to={"/menu"} className="nav-link text-white">Menu</Link>
               </li>
               <li className="nav-item">
-                <button className="btn btn-danger" onClick={() => cerrarSesion()}>cerrar sesión</button>
+                <button className="btn btn-danger" data-testid='cerrarsesion' onClick={() => cerrarSesion()}>cerrar sesión</button>
               </li>
             </ul>
 

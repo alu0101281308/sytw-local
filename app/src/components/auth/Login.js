@@ -43,7 +43,6 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log(usuario)
 
         // Validar que no haya campos vacios
         if(email.trim() === '' || password.trim() === '') {

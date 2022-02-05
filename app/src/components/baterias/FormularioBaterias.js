@@ -59,7 +59,6 @@ const FormularioBaterias = () => {
 
     const onSubmitBateria = ((e) => {
         e.preventDefault();
-
         // validaciones
 
         if (marca.trim() === '' || estado.trim() === '' || voltaje === '' || amperios === '' || precio === '') {
@@ -99,7 +98,7 @@ const FormularioBaterias = () => {
 
     return (
         <div className="container-publicar rounded border border-dark mt-5 mb-5">
-            {alerta ? (<div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>) : null}
+            {alerta ? (<div data-testid='alerta' className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>) : null}
             <form onSubmit={onSubmitBateria}>
                 <div className="">
 
@@ -110,7 +109,7 @@ const FormularioBaterias = () => {
                     <div className="col">
                         <div className="mt-2 mb-2">
                             <label htmlFor="select">Marca</label>
-                            <select className="form-select" name="marca" value={marca} onChange={onChange}>
+                            <select data-testid='marca'className="form-select" name="marca" value={marca} onChange={onChange}>
                                 <option value="" selected disabled hidden>Seleciona una marca</option>
                                 <option value="yuasa">Yuasa</option>
                                 <option value="bosch">Bosch</option>
@@ -125,7 +124,7 @@ const FormularioBaterias = () => {
                     <div className="col">
                         <div className="mt-2 mb-2">
                             <label htmlFor="select">Estado de la batería</label>
-                            <select className="form-select" name="estado" value={estado} onChange={onChange}>
+                            <select data-testid='estado' className="form-select" name="estado" value={estado} onChange={onChange}>
                                 <option value="" selected disabled hidden>Seleciona un estado</option>
                                 <option value="nuevo">Nueva</option>
                                 <option value="buen-estado">Buen estado</option>
@@ -148,6 +147,7 @@ const FormularioBaterias = () => {
                                 min='0'
                                 value={voltaje}
                                 onChange={onChange}
+                                data-testid='voltaje'
                             />
                         </div>
                     </div>
@@ -163,6 +163,7 @@ const FormularioBaterias = () => {
                                 min='0'
                                 value={amperios}
                                 onChange={onChange}
+                                data-testid='amperios'
                             />
                         </div>
                     </div>
@@ -178,6 +179,7 @@ const FormularioBaterias = () => {
                                 min='0'
                                 value={precio}
                                 onChange={onChange}
+                                data-testid='precio'
                             />
                         </div>
                     </div>
@@ -188,6 +190,7 @@ const FormularioBaterias = () => {
                         type="submit"
                         className="btn botones"
                         value={bateriaactual ? 'Editar' : 'Publicar'}
+                        data-testid='botonBateria'
                     />
                 </div>
             </form>

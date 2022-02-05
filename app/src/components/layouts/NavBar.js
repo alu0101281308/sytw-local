@@ -49,22 +49,15 @@ const NavBar = () => {
 
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to={"/login"} className="nav-link">Iniciar sesión</Link>
+                <Link to={"/login"} className="nav-link text-white">Iniciar sesión</Link>
               </li>
               <li className="nav-item">
-                <Link to={"/nueva-cuenta"} className="nav-link"> Crear cuenta</Link>
+                <Link to={"/nueva-cuenta"} className="nav-link text-white"> Crear cuenta</Link>
               </li>
             </ul>
 
           }
-          {/* <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">Iniciar sesión</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/nueva-cuenta"} className="nav-link"> Crear cuenta</Link>
-            </li>
-          </ul> */}
+
         </div>
       </div>
     </nav>

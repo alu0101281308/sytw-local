@@ -145,6 +145,7 @@ const FormularioBaterias = () => {
                                 id="voltaje"
                                 name="voltaje"
                                 placeholder="Voltaje de la batería"
+                                min='0'
                                 value={voltaje}
                                 onChange={onChange}
                             />
@@ -159,6 +160,7 @@ const FormularioBaterias = () => {
                                 id="amperios"
                                 name="amperios"
                                 placeholder="Amperios de la batería"
+                                min='0'
                                 value={amperios}
                                 onChange={onChange}
                             />
@@ -173,6 +175,7 @@ const FormularioBaterias = () => {
                                 id="precio"
                                 name="precio"
                                 placeholder="Precio de la batería"
+                                min='0'
                                 value={precio}
                                 onChange={onChange}
                             />

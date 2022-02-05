@@ -11,7 +11,7 @@ import {
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION,
 } from '../../types';
 
 const AuthState = props => {
@@ -100,6 +100,7 @@ const AuthState = props => {
             })
         }
     }
+
 
     // Cierra la sesión del usuario
     const cerrarSesion = () => {

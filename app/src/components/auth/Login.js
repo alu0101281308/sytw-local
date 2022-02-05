@@ -43,6 +43,7 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        console.log(usuario)
 
         // Validar que no haya campos vacios
         if(email.trim() === '' || password.trim() === '') {
@@ -55,10 +56,10 @@ const Login = () => {
 
     return (
         <div className="container-login">
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
+            { alerta ? ( <div data-testid='alerta' className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
 
 
-            <h1>Iniciar Sesión</h1>
+            <h1 data-testid='titulo'>Iniciar Sesión</h1>
 
             <form
                 onSubmit={onSubmit}
@@ -73,6 +74,7 @@ const Login = () => {
                         placeholder="Enter email"
                         value={email}
                         onChange={onChange}
+                        data-testid='email'
                     />
                 </div>
 
@@ -86,11 +88,12 @@ const Login = () => {
                         placeholder="Enter password"
                         value={password}
                         onChange={onChange}
+                        data-testid='password'
                     />
                 </div>
 
                 <div className="campo-form d-grid">
-                    <input type="submit" className="btn btn-primary btn-block" value="Iniciar Sesión" />
+                    <input type="submit" className="btn btn-primary btn-block" value="Iniciar Sesión" data-testid='botonSubmit'/>
                 </div>
             </form>
 

@@ -2,6 +2,7 @@ const request = require("supertest");
 const app = require("../src/index");
 
 describe("Tests para las rutas de los usuarios", () => {
+  let token;
   it("Registrar usuario (Singup)", (done) => {
     const data = {
       nombre: "Name",
@@ -14,6 +15,9 @@ describe("Tests para las rutas de los usuarios", () => {
       .send(data)
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
+      .expect((res) => {
+        token = res.body.token;
+      })
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -81,6 +85,7 @@ describe("Tests para las rutas de los usuarios", () => {
       .delete("/api/usuarios")
       .send(data)
       .set("Accept", "application/json")
+      .set("x-auth-token", token)
       .expect("Content-Type", /json/)
       .expect(200)
       .end((err) => {
